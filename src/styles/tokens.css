@@ -1,0 +1,29 @@
+:root {
+    /*Colors*/
+
+    --color-primary: #0070f3;
+    --color-primary-hover: #0366d6;
+    --color-secondary: #6c757d;
+    --color-secondary-hover: #5a6268;
+    --color-danger: #dc3545;
+    --color-danger-hover: #c82333;
+    --color-success: #28a745;
+    --color-success-hover: #218838;
+    --color-warning: #ffc107;
+    --color-warning-hover: #e0a800;
+    --color-ghost: #f8f9fa;
+    --color-ghost-hover: #e9ecef;
+
+    /*Text Colors*/
+    --color-on-primary: #ffffff;
+
+    /*Sizing*/
+    --radius: 4px;
+    --radius-lg: 8px;
+
+    /*Focus border*/
+    --focus-border: 2px solid var(--color-primary);
+
+    /*Transition*/
+    --transition: all 0.3s ease-in-out;
+}

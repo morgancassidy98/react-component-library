@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
+// @ts-ignore: side-effect CSS import without type declarations
+import '../src/styles/tokens.css'
 
 const preview: Preview = {
   parameters: {
