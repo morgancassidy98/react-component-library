@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.css';
 
 type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'ghost' | 'outline';
-type ButtonSize = 'small' | 'medium' | 'large';
+type ButtonSize = 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
