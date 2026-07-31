@@ -57,24 +57,25 @@
 
 .input__field:focus {
   border-color: var(--color-primary);
-  box-shadow: var(--focus-ring), var(--shadow-sm);
+  box-shadow: var(--shadow-focus);
 }
+
+
 
 /* ── Error State ── */
 .input-wrapper--error .input__label {
   color: var(--color-danger);
 }
-
 .input-wrapper--error .input__field {
   border-color: var(--color-danger);
-  box-shadow: 0 0 0 3px rgba(76, 6, 29, 0.12),
-              var(--shadow-sm);
+  box-shadow: var(--shadow-error);
 }
 
 .input-wrapper--error .input__field:focus {
-  box-shadow: 0 0 0 3px rgba(76, 6, 29, 0.2),
-              var(--shadow-sm);
+  border-color: var(--color-danger);
+  box-shadow: var(--shadow-error);
 }
+
 
 /* ── Disabled State ── */
 .input-wrapper--disabled {

@@ -31,7 +31,7 @@
   --color-on-light:         #1a1a2e;
   --color-on-secondary:     #1a3a52;
   --color-on-ghost:         #2D5D7B;
-  
+
 
   /* ── Surface & Borders ── */
   --color-border:           rgba(45, 93, 123, 0.25);
@@ -62,6 +62,10 @@
   --shadow-lg:              0 4px 12px rgba(45, 93, 123, 0.16),
                             0 8px 24px rgba(45, 93, 123, 0.1);
   --shadow-inset:           inset 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-focus:           0 0 0 3px rgba(45, 93, 123, 0.2),
+                            0 1px 2px rgba(45, 93, 123, 0.08);
+  --shadow-error:           0 0 0 3px rgba(76, 6, 29, 0.15),
+                            0 1px 2px rgba(76, 6, 29, 0.08);
 
   /* ── Focus ── */
   --focus-ring:             0 0 0 3px rgba(45, 93, 123, 0.3),

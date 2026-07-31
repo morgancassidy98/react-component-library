@@ -9,7 +9,7 @@
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.7;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   position: relative;
   transition: var(--transition);
 }
