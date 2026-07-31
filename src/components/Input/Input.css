@@ -1,0 +1,106 @@
+/* ── Wrapper ── */
+.input-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+}
+
+.input-wrapper--full {
+  display: flex;
+  width: 100%;
+}
+
+/* ── Label ── */
+.input__label {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.input__required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* ── Field ── */
+.input__field {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-on-light);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  transition: var(--transition);
+  width: 100%;
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input__field::placeholder {
+  color: #9ca3af;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.input__field:hover:not(:disabled) {
+  border-color: var(--color-border-hover);
+}
+
+.input__field:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring), var(--shadow-sm);
+}
+
+/* ── Error State ── */
+.input-wrapper--error .input__label {
+  color: var(--color-danger);
+}
+
+.input-wrapper--error .input__field {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(76, 6, 29, 0.12),
+              var(--shadow-sm);
+}
+
+.input-wrapper--error .input__field:focus {
+  box-shadow: 0 0 0 3px rgba(76, 6, 29, 0.2),
+              var(--shadow-sm);
+}
+
+/* ── Disabled State ── */
+.input-wrapper--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input__field:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Helper & Error Text ── */
+.input__helper {
+  font-size: 11px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: #6b7280;
+  margin: 0;
+}
+
+.input__error {
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-danger);
+  margin: 0;
+}
