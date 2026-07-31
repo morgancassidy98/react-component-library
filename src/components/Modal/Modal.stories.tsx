@@ -111,7 +111,13 @@ export const WithForm: Story = {
         </>
       }
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '16px',
+        width: '100%',
+        boxSizing: 'border-box',
+      }}>
         <Input label="Full Name" placeholder="Enter your name" fullWidth />
         <Input label="Email Address" type="email" placeholder="you@example.com" fullWidth />
         <Input label="Job Title" placeholder="Enter your title" fullWidth required />
