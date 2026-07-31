@@ -2,14 +2,14 @@
 .alert {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 16px 20px;
+  gap: 16px;
+  padding: 22px 28px;
   border-radius: var(--radius);
   border: 1px solid transparent;
   font-family: var(--font-body);
-  font-size: 13px;
-  line-height: 1.6;
-  box-shadow: var(--shadow-sm);
+  font-size: 14px;
+  line-height: 1.7;
+  box-shadow: var(--shadow-md);
   position: relative;
   transition: var(--transition);
 }
@@ -19,7 +19,8 @@
   font-size: 16px;
   line-height: 1;
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 3px;
+  opacity: 0.9;
 }
 
 /* ── Body ── */
@@ -30,15 +31,17 @@
 
 .alert__title {
   font-family: var(--font-body);
-  font-weight: var(--font-weight-semibold);
-  font-size: 13px;
-  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-medium);
+  font-size: 11px;
+  letter-spacing: var(--letter-spacing-widest);
   text-transform: uppercase;
-  margin: 0 0 4px 0;
+  margin: 0 0 8px 0;
 }
 
 .alert__message {
   font-weight: var(--font-weight-light);
+  font-size: 14px;
+  letter-spacing: var(--letter-spacing-wide);
   opacity: 0.9;
 }
 
@@ -47,13 +50,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 2px 4px;
+  padding: 4px 6px;
   line-height: 1;
-  font-size: 12px;
-  opacity: 0.5;
-  transition: opacity var(--transition-fast);
+  font-size: 11px;
+  letter-spacing: var(--letter-spacing-widest);
+  opacity: 0.45;
+  transition: var(--transition);
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 2px;
   border-radius: var(--radius-sm);
   color: inherit;
 }
@@ -69,42 +73,51 @@
 }
 
 /* ── Variants ── */
+
+/* Info — navy text on light blue tint, passes AA */
 .alert--info {
-  background: rgba(161, 205, 244, 0.15);
-  border-color: rgba(161, 205, 244, 0.5);
+  background: color-mix(in srgb, var(--color-secondary) 18%, transparent);
+  border-color: color-mix(in srgb, var(--color-secondary) 55%, transparent);
   color: #1a3a52;
 }
 
-.alert--info .alert__icon {
-  color: var(--color-primary);
+.alert--info .alert__icon,
+.alert--info .alert__title {
+  color: #1e4259;
 }
 
+/* Success — dark green text on light green tint, passes AA */
 .alert--success {
-  background: rgba(134, 168, 115, 0.12);
-  border-color: rgba(134, 168, 115, 0.4);
+  background: color-mix(in srgb, var(--color-success) 14%, transparent);
+  border-color: color-mix(in srgb, var(--color-success) 40%, transparent);
   color: #2d4a24;
 }
 
-.alert--success .alert__icon {
-  color: var(--color-success);
+.alert--success .alert__icon,
+.alert--success .alert__title {
+  color: #234019;
 }
 
+/* Warning — dark brown text on light warm tint, passes AA */
 .alert--warning {
-  background: rgba(123, 101, 45, 0.1);
-  border-color: rgba(123, 101, 45, 0.35);
-  color: #4a3a10;
+  background: color-mix(in srgb, var(--color-warning) 12%, transparent);
+  border-color: color-mix(in srgb, var(--color-warning) 35%, transparent);
+  color: #3d3016;
 }
 
-.alert--warning .alert__icon {
-  color: var(--color-warning);
+.alert--warning .alert__icon,
+.alert--warning .alert__title {
+  color: #2e2410;
 }
 
+/* Danger — dark burgundy text on light pink tint, passes AA */
 .alert--danger {
-  background: rgba(76, 6, 29, 0.08);
-  border-color: rgba(76, 6, 29, 0.25);
-  color: #4C061D;
+  background: color-mix(in srgb, var(--color-danger) 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-danger) 30%, transparent);
+  color: #3a0416;
 }
 
-.alert--danger .alert__icon {
-  color: var(--color-danger);
+.alert--danger .alert__icon,
+.alert--danger .alert__title {
+  color: #4C061D;
 }
