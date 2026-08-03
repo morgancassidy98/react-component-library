@@ -1,0 +1,146 @@
+/* ── Wrapper ── */
+.select-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.select-wrapper--full {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Label ── */
+.select__label {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.select__required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* ── Control (field + chevron wrapper) ── */
+.select__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── Field ── */
+.select__field {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-on-light);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px 40px 12px 16px;
+  transition: var(--transition);
+  width: 100%;
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+  min-width: 0;
+  cursor: pointer;
+
+  /* Hide native arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.select__field:hover:not(:disabled) {
+  border-color: var(--color-border-hover);
+}
+
+.select__field:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* Placeholder option color */
+.select__field option[value=""] {
+  color: #9ca3af;
+}
+
+.select__field option {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-on-light);
+  font-weight: var(--font-weight-light);
+}
+
+/* ── Chevron ── */
+.select__chevron {
+  position: absolute;
+  right: 14px;
+  font-size: 18px;
+  color: var(--color-primary);
+  pointer-events: none;
+  opacity: 0.6;
+  transition: var(--transition);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.select__field:focus ~ .select__chevron {
+  opacity: 1;
+}
+
+/* ── Error State ── */
+.select-wrapper--error .select__label {
+  color: var(--color-danger);
+}
+
+.select-wrapper--error .select__field {
+  border-color: var(--color-danger);
+  box-shadow: var(--shadow-error);
+}
+
+.select-wrapper--error .select__field:focus {
+  border-color: var(--color-danger);
+  box-shadow: var(--shadow-error);
+}
+
+/* ── Disabled State ── */
+.select-wrapper--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.select__field:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Helper & Error Text ── */
+.select__helper {
+  font-size: 11px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: #6b7280;
+  margin: 0;
+}
+
+.select__error {
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-danger);
+  margin: 0;
+}

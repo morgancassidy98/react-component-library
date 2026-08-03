@@ -1,0 +1,34 @@
+/* ── Skip Nav ── */
+.skip-nav {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9999;
+
+  /* Hidden by default */
+  transform: translateY(-200%);
+  opacity: 0;
+
+  /* Reveal on focus */
+  transition: transform var(--transition), opacity var(--transition);
+
+  /* Match library aesthetic */
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-on-dark);
+  background: var(--color-primary);
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.skip-nav:focus {
+  transform: translateY(0);
+  opacity: 1;
+  outline: none;
+  box-shadow: var(--focus-ring), var(--shadow-lg);
+}
