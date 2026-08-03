@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import { useId } from 'react';
 import './Input.css';
 
 type InputType = 'text' | 'email' | 'password' | 'number' | 'search' | 'tel' | 'url';
@@ -31,9 +31,9 @@ export const Input = ({
   const hasError = Boolean(errorText);
 
   const wrapperClasses = [
-    'input-wrapper',
-    fullWidth ? 'input-wrapper--full' : '',
-    disabled ? 'input-wrapper--disabled' : '',
+    'form-field',
+    fullWidth ? 'form-field--full' : '',
+    disabled ? 'is-disabled' : '',
     hasError ? 'input-wrapper--error' : '',
     className ?? '',
   ]
@@ -42,10 +42,10 @@ export const Input = ({
 
   return (
     <div className={wrapperClasses}>
-      <label className="input__label" htmlFor={id}>
+      <label className="form__label" htmlFor={id}>
         {label}
         {required && (
-          <span className="input__required" aria-hidden="true"> *</span>
+          <span className="form__required" aria-hidden="true"> *</span>
         )}
       </label>
 
@@ -63,13 +63,13 @@ export const Input = ({
       />
 
       {hasError && (
-        <p className="input__error" id={errorId} role="alert">
+        <p className="form__error" id={errorId} role="alert">
           {errorText}
         </p>
       )}
 
       {!hasError && helperText && (
-        <p className="input__helper" id={helperId}>
+        <p className="form__helper" id={helperId}>
           {helperText}
         </p>
       )}

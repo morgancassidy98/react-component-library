@@ -11,22 +11,23 @@
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
+  box-sizing: border-box;
 }
 
 /* ── Sizes ── */
 .badge--sm, .badge--small {
-  font-size: 9px;
-  padding: 4px 8px;
+  font-size: 12px;
+  padding: 5px 10px;
 }
 
 .badge--md, .badge--medium {
-  font-size: 10px;
-  padding: 6px 10px;
+  font-size: 12px;
+  padding: 6px 12px;
 }
 
 .badge--lg, .badge--large {
-  font-size: 11px;
-  padding: 8px 14px;
+  font-size: 14px;
+  padding: 8px 16px;
 }
 
 /* ── Shapes ── */

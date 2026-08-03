@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: var(--radius);
   cursor: pointer;
   font-family: var(--font-body);
@@ -20,7 +20,6 @@
   overflow: hidden;
 }
 
-/* Shimmer effect on hover */
 .btn::after {
   content: '';
   position: absolute;
@@ -176,7 +175,7 @@
   opacity: 0.85;
 }
 
-/* ── Loading spinner ── */
+/* ── Loading Spinner ── */
 .btn__spinner {
   display: inline-block;
   width: 0.9em;

@@ -1,20 +1,13 @@
-/* ── Skip Nav ── */
 .skip-nav {
   position: fixed;
   top: 16px;
   left: 16px;
   z-index: 9999;
-
-  /* Hidden by default */
   transform: translateY(-200%);
   opacity: 0;
-
-  /* Reveal on focus */
   transition: transform var(--transition), opacity var(--transition);
-
-  /* Match library aesthetic */
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--letter-spacing-widest);
   text-transform: uppercase;

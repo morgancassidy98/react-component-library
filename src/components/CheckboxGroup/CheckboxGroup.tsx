@@ -43,12 +43,10 @@ export const CheckboxGroup = ({
   const handleSelectAll = () => {
     if (!onChange) return;
     if (allChecked) {
-      // Uncheck all enabled options
       onChange(values.filter((v) =>
         options.find((o) => o.value === v && o.disabled)
       ));
     } else {
-      // Check all enabled options
       const enabledValues = enabledOptions.map((o) => o.value);
       const disabledChecked = values.filter((v) =>
         options.find((o) => o.value === v && o.disabled)
@@ -67,8 +65,9 @@ export const CheckboxGroup = ({
   };
 
   const groupClasses = [
+    'fieldset-reset',
     'checkbox-group',
-    disabled ? 'checkbox-group--disabled' : '',
+    disabled ? 'is-disabled' : '',
     hasError ? 'checkbox-group--error' : '',
     className ?? '',
   ]
@@ -82,10 +81,10 @@ export const CheckboxGroup = ({
       aria-required={required}
       disabled={disabled}
     >
-      <legend className="checkbox-group__legend">
+      <legend className="form__label">
         {legend}
         {required && (
-          <span className="checkbox-group__required" aria-hidden="true"> *</span>
+          <span className="form__required" aria-hidden="true"> *</span>
         )}
       </legend>
 
@@ -117,7 +116,7 @@ export const CheckboxGroup = ({
       </div>
 
       {hasError && (
-        <p className="checkbox-group__error" id={errorId} role="alert">
+        <p className="form__error" id={errorId} role="alert">
           {errorText}
         </p>
       )}

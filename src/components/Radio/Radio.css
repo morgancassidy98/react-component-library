@@ -3,26 +3,7 @@
   display: inline-flex;
   flex-direction: column;
   gap: 6px;
-  font-family: var(--font-body);
   box-sizing: border-box;
-}
-
-.radio-wrapper--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* ── Control Row ── */
-.radio__control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  cursor: pointer;
-}
-
-.radio-wrapper--disabled .radio__control {
-  cursor: not-allowed;
 }
 
 /* ── Hidden Native Input ── */
@@ -50,20 +31,18 @@
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-/* Hover */
-.radio__control:hover .radio__circle {
+.control-row:hover .radio__circle {
   border-color: var(--color-border-hover);
 }
 
-/* Focus */
 .radio__input:focus-visible ~ .radio__circle {
   border-color: var(--color-primary);
   box-shadow: var(--focus-ring);
 }
 
-/* Checked */
 .radio__input:checked ~ .radio__circle {
   border-color: var(--color-primary);
   box-shadow: var(--shadow-sm);
@@ -85,6 +64,7 @@
 
 /* ── Label ── */
 .radio__label {
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: var(--font-weight-light);
   letter-spacing: var(--letter-spacing-wide);
@@ -93,16 +73,7 @@
   line-height: 1.4;
 }
 
-.radio-wrapper--disabled .radio__label {
-  cursor: not-allowed;
-}
-
-/* ── Helper Text ── */
-.radio__helper {
-  font-size: 11px;
-  font-weight: var(--font-weight-light);
-  letter-spacing: var(--letter-spacing-wide);
-  color: #6b7280;
-  margin: 0;
+/* ── Indented Helper ── */
+.radio__indented {
   padding-left: 28px;
 }

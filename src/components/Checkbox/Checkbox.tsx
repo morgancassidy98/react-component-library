@@ -1,7 +1,8 @@
 import React, { useId, useEffect, useRef } from 'react';
 import './Checkbox.css';
 
-interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'
+interface CheckboxProps extends Omit
+  <React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'
 > {
   label: string;
   helperText?: string;
@@ -24,7 +25,6 @@ export const Checkbox = ({
   const hasError = Boolean(errorText);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Indeterminate can only be set via JavaScript
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.indeterminate = indeterminate;
@@ -33,7 +33,7 @@ export const Checkbox = ({
 
   const wrapperClasses = [
     'checkbox-wrapper',
-    disabled ? 'checkbox-wrapper--disabled' : '',
+    disabled ? 'is-disabled' : '',
     hasError ? 'checkbox-wrapper--error' : '',
     className ?? '',
   ]
@@ -42,7 +42,7 @@ export const Checkbox = ({
 
   return (
     <div className={wrapperClasses}>
-      <div className="checkbox__control">
+      <div className="control-row">
         <input
           ref={inputRef}
           id={id}
@@ -64,13 +64,13 @@ export const Checkbox = ({
       </div>
 
       {hasError && (
-        <p className="checkbox__error" id={errorId} role="alert">
+        <p className="form__error checkbox__indented" id={errorId} role="alert">
           {errorText}
         </p>
       )}
 
       {!hasError && helperText && (
-        <p className="checkbox__helper" id={helperId}>
+        <p className="form__helper checkbox__indented" id={helperId}>
           {helperText}
         </p>
       )}

@@ -36,9 +36,9 @@ export const RadioGroup = ({
   const hasError = Boolean(errorText);
 
   const groupClasses = [
+    'fieldset-reset',
     'radio-group',
-    disabled ? 'radio-group--disabled' : '',
-    hasError ? 'radio-group--error' : '',
+    disabled ? 'is-disabled' : '',
     className ?? '',
   ]
     .filter(Boolean)
@@ -51,10 +51,10 @@ export const RadioGroup = ({
       aria-required={required}
       disabled={disabled}
     >
-      <legend className="radio-group__legend">
+      <legend className="form__label">
         {legend}
         {required && (
-          <span className="radio-group__required" aria-hidden="true"> *</span>
+          <span className="form__required" aria-hidden="true"> *</span>
         )}
       </legend>
 
@@ -74,7 +74,7 @@ export const RadioGroup = ({
       </div>
 
       {hasError && (
-        <p className="radio-group__error" id={errorId} role="alert">
+        <p className="form__error" id={errorId} role="alert">
           {errorText}
         </p>
       )}

@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import { useId } from 'react';
 import './Radio.css';
 
 interface RadioProps extends Omit
@@ -22,7 +22,7 @@ export const Radio = ({
 
   const wrapperClasses = [
     'radio-wrapper',
-    disabled ? 'radio-wrapper--disabled' : '',
+    disabled ? 'is-disabled' : '',
     className ?? '',
   ]
     .filter(Boolean)
@@ -30,7 +30,7 @@ export const Radio = ({
 
   return (
     <div className={wrapperClasses}>
-      <div className="radio__control">
+      <div className="control-row">
         <input
           id={id}
           type="radio"
@@ -49,7 +49,7 @@ export const Radio = ({
       </div>
 
       {helperText && (
-        <p className="radio__helper" id={helperId}>
+        <p className="form__helper radio__indented" id={helperId}>
           {helperText}
         </p>
       )}

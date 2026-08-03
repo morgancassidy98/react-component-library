@@ -32,7 +32,6 @@
   --color-on-secondary:     #1a3a52;
   --color-on-ghost:         #2D5D7B;
 
-
   /* ── Surface & Borders ── */
   --color-border:           rgba(45, 93, 123, 0.25);
   --color-border-hover:     rgba(45, 93, 123, 0.6);
@@ -75,4 +74,92 @@
   --transition-fast:        0.15s ease;
   --transition:             0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow:        0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ════════════════════════════════
+   SHARED UTILITY CLASSES
+   ════════════════════════════════ */
+
+/* ── Form Field Wrapper ── */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .form-field {
+    width: auto;
+  }
+}
+
+.form-field--full {
+  width: 100% !important;
+}
+
+/* ── Shared Form Label ── */
+.form__label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: color var(--transition);
+  line-height: 1;
+}
+
+/* ── Shared Required Marker ── */
+.form__required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* ── Shared Helper Text ── */
+.form__helper {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Shared Error Text ── */
+.form__error {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-danger);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Shared Disabled State ── */
+.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Shared Control Row (Checkbox/Radio) ── */
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* ── Shared Fieldset Reset ── */
+.fieldset-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
 }
