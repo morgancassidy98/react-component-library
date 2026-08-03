@@ -1,0 +1,55 @@
+/* ── Fieldset Reset ── */
+.radio-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+}
+
+.radio-group--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Legend ── */
+.radio-group__legend {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  padding: 0;
+  float: left;
+  width: 100%;
+}
+
+.radio-group--error .radio-group__legend {
+  color: var(--color-danger);
+}
+
+.radio-group__required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* ── Options ── */
+.radio-group__options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  clear: both;
+}
+
+/* ── Error Text ── */
+.radio-group__error {
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-danger);
+  margin: 4px 0 0 0;
+}

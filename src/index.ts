@@ -5,3 +5,7 @@ export { Input } from './components/Input/Input';
 export { Modal } from './components/Modal/Modal';
 export { SkipNav } from './components/SkipNav/SkipNav';
 export { Select } from './components/Select/Select';
+export { Checkbox } from './components/Checkbox/Checkbox';
+export { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup';
+export { Radio } from './components/Radio/Radio';
+export { RadioGroup } from './components/RadioGroup/RadioGroup';

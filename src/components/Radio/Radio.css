@@ -1,0 +1,108 @@
+/* ── Wrapper ── */
+.radio-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+}
+
+.radio-wrapper--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Control Row ── */
+.radio__control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-wrapper--disabled .radio__control {
+  cursor: not-allowed;
+}
+
+/* ── Hidden Native Input ── */
+.radio__input {
+  position: absolute;
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* ── Custom Circle ── */
+.radio__circle {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+/* Hover */
+.radio__control:hover .radio__circle {
+  border-color: var(--color-border-hover);
+}
+
+/* Focus */
+.radio__input:focus-visible ~ .radio__circle {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+/* Checked */
+.radio__input:checked ~ .radio__circle {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Inner Dot ── */
+.radio__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  transform: scale(0);
+  transition: transform var(--transition);
+}
+
+.radio__input:checked ~ .radio__circle .radio__dot {
+  transform: scale(1);
+}
+
+/* ── Label ── */
+.radio__label {
+  font-size: 13px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-on-light);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.radio-wrapper--disabled .radio__label {
+  cursor: not-allowed;
+}
+
+/* ── Helper Text ── */
+.radio__helper {
+  font-size: 11px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: #6b7280;
+  margin: 0;
+  padding-left: 28px;
+}
