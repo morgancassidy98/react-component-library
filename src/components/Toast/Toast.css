@@ -1,0 +1,197 @@
+/* ── Container ── */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  pointer-events: none;
+  max-width: calc(100vw - 48px);
+}
+
+@media (max-width: 480px) {
+  .toast-container {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    align-items: stretch;
+    max-width: 100%;
+  }
+}
+
+/* ── Toast ── */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-lg);
+  pointer-events: all;
+  width: 360px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* Enter state */
+  opacity: 0;
+  transform: translateX(16px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+}
+
+@media (max-width: 480px) {
+  .toast {
+    width: 100%;
+    transform: translateY(16px);
+  }
+}
+
+/* ── Visible State ── */
+.toast--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 480px) {
+  .toast--visible {
+    transform: translateY(0);
+  }
+}
+
+/* ── Exit State ── */
+.toast--exiting {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+@media (max-width: 480px) {
+  .toast--exiting {
+    transform: translateY(16px);
+  }
+}
+
+/* ── Icon ── */
+.toast__icon {
+  font-size: 14px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.9;
+}
+
+/* ── Body ── */
+.toast__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast__title {
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  margin: 0 0 4px 0;
+  line-height: 1;
+}
+
+.toast__message {
+  font-size: 13px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ── Dismiss Button ── */
+.toast__dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  font-size: 12px;
+  opacity: 0.45;
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  color: inherit;
+}
+
+.toast__dismiss:hover { opacity: 1; }
+
+.toast__dismiss:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  opacity: 1;
+}
+
+/* ── Progress Bar ── */
+.toast__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: left;
+  animation: toast-progress linear forwards;
+  opacity: 0.4;
+}
+
+@keyframes toast-progress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Variants ── */
+.toast--success {
+  background: color-mix(in srgb, var(--color-success) 14%, #ffffff);
+  border-color: color-mix(in srgb, var(--color-success) 40%, transparent);
+  color: #2d4a24;
+}
+
+.toast--success .toast__icon,
+.toast--success .toast__title { color: #234019; }
+
+.toast--success .toast__progress { background: var(--color-success); }
+
+.toast--info {
+  background: color-mix(in srgb, var(--color-secondary) 18%, #ffffff);
+  border-color: color-mix(in srgb, var(--color-secondary) 55%, transparent);
+  color: #1a3a52;
+}
+
+.toast--info .toast__icon,
+.toast--info .toast__title { color: #1e4259; }
+
+.toast--info .toast__progress { background: var(--color-primary); }
+
+.toast--warning {
+  background: color-mix(in srgb, var(--color-warning) 12%, #ffffff);
+  border-color: color-mix(in srgb, var(--color-warning) 35%, transparent);
+  color: #3d3016;
+}
+
+.toast--warning .toast__icon,
+.toast--warning .toast__title { color: #2e2410; }
+
+.toast--warning .toast__progress { background: var(--color-warning); }
+
+.toast--danger {
+  background: color-mix(in srgb, var(--color-danger) 10%, #ffffff);
+  border-color: color-mix(in srgb, var(--color-danger) 30%, transparent);
+  color: #3a0416;
+}
+
+.toast--danger .toast__icon,
+.toast--danger .toast__title { color: #4C061D; }
+
+.toast--danger .toast__progress { background: var(--color-danger); }
