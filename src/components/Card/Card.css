@@ -1,0 +1,129 @@
+/* ── Base ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+/* ── Variants ── */
+.card--default {
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--outlined {
+  border: 1px solid var(--color-border-hover);
+  box-shadow: none;
+}
+
+.card--elevated {
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Clickable ── */
+.card--clickable {
+  cursor: pointer;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.card--clickable:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--color-border-hover);
+}
+
+.card--clickable:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--clickable:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring), var(--shadow-md);
+}
+
+/* ── Header ── */
+.card__header {
+  padding: 20px 24px 16px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--color-on-light);
+  line-height: 1.2;
+}
+
+.card__header--divider {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+  margin-bottom: 0;
+}
+
+/* ── Body ── */
+.card__body {
+  padding: 20px 24px;
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-on-light);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.card__header + .card__body {
+  padding-top: 12px;
+}
+
+.card__header--divider + .card__body {
+  padding-top: 20px;
+}
+
+/* ── Footer ── */
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 24px 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.card__footer > *:first-child:not(:last-child) {
+  margin-right: auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .card__header {
+    font-size: 18px;
+    padding: 16px 18px 12px;
+  }
+
+  .card__body {
+    padding: 16px 18px;
+    font-size: 13px;
+  }
+
+  .card__footer {
+    padding: 12px 18px 16px;
+    flex-wrap: wrap;
+  }
+
+  .card__footer > *:first-child:not(:last-child) {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .card__footer > * {
+    width: 100%;
+  }
+}
