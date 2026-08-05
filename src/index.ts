@@ -13,3 +13,4 @@ export { ToastProvider } from './components/Toast/ToastContext';
 export { ToastContainer } from './components/Toast/Toast';
 export { useToast } from './components/Toast/useToast';
 export { Card } from './components/Card/Card';
+export { Nav } from './components/Nav/Nav';
