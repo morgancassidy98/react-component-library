@@ -2,7 +2,7 @@
 
 A accessible, elegant React component library built with TypeScript. Designed with WCAG 2.1 and Section 508 compliance at its core — not as an afterthought.
 
-[![Storybook](https://img.shields.io/badge/Storybook-Live-ff4785?logo=storybook)](https://github.com/morgancassidy98/react-component-library)
+[![Storybook](https://img.shields.io/badge/Storybook-Live-ff4785?logo=storybook)](https://www.chromatic.com/library?appId=6a739c264d21ac19adf2fc20)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6?logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61dafb?logo=react)](https://react.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
