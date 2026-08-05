@@ -30,11 +30,9 @@ interface NavActionsProps {
   className?: string;
 }
 
-// ── Sub-components ──
-
 const NavBrand = ({ href = '/', children, className }: NavBrandProps) => (
-  <a
-    href={href}
+  
+    <a href={href}
     className={['nav__brand', className ?? ''].filter(Boolean).join(' ')}
   >
     {children}
@@ -45,6 +43,7 @@ const NavItems = ({ children, className }: NavItemsProps) => (
   <ul
     className={['nav__items', className ?? ''].filter(Boolean).join(' ')}
     role="list"
+    aria-label="Main navigation links"
   >
     {children}
   </ul>
@@ -59,7 +58,7 @@ const NavItem = ({
 }: NavItemProps) => (
   <li className="nav__item-wrapper">
     
-     <a href={disabled ? undefined : href}
+      <a href={disabled ? undefined : href}
       className={[
         'nav__item',
         active ? 'nav__item--active' : '',
@@ -85,8 +84,6 @@ const NavActions = ({ children, className }: NavActionsProps) => (
   </div>
 );
 
-// ── Main Nav Component ──
-
 export const Nav = ({ children, className, ...rest }: NavProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -95,19 +92,19 @@ export const Nav = ({ children, className, ...rest }: NavProps) => {
       className={['nav-header', className ?? ''].filter(Boolean).join(' ')}
       {...rest}
     >
-      <nav
-        className="nav"
-        aria-label="Main navigation"
-      >
+      {/* Screen reader announcement for mobile menu */}
+      <span className="sr-only" aria-live="polite">
+        {isOpen ? 'Navigation menu opened' : ''}
+      </span>
+
+      <nav className="nav" aria-label="Main navigation">
         <div className="nav__inner">
-          {/* Render brand separately from other children */}
           {React.Children.map(children, (child) => {
             if (!React.isValidElement(child)) return null;
             if (child.type === NavBrand) return child;
             return null;
           })}
 
-          {/* Mobile toggle */}
           <button
             className={['nav__toggle', isOpen ? 'nav__toggle--open' : ''].filter(Boolean).join(' ')}
             onClick={() => setIsOpen(!isOpen)}
@@ -120,7 +117,6 @@ export const Nav = ({ children, className, ...rest }: NavProps) => {
             <span className="nav__toggle-bar" />
           </button>
 
-          {/* Nav menu — items + actions */}
           <div
             id="nav-menu"
             className={['nav__menu', isOpen ? 'nav__menu--open' : ''].filter(Boolean).join(' ')}
@@ -137,7 +133,6 @@ export const Nav = ({ children, className, ...rest }: NavProps) => {
   );
 };
 
-// Attach sub-components
 Nav.Brand   = NavBrand;
 Nav.Items   = NavItems;
 Nav.Item    = NavItem;

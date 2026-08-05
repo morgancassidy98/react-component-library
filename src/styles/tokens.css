@@ -163,3 +163,49 @@
   margin: 0;
   padding: 0;
 }
+
+/* ── Screen Reader Only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Form Layout Utilities ── */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .form-row > * {
+    flex: 1;
+  }
+}
+
+/* ── Button Full Width Mobile ── */
+@media (max-width: 480px) {
+  .btn--full-mobile {
+    width: 100%;
+  }
+}

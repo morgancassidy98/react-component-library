@@ -33,11 +33,17 @@ export const Alert = ({
   onDismiss,
 }: AlertProps) => {
   const [visible, setVisible] = useState(true);
+  const [dismissed, setDismissed] = useState(false);
 
-  if (!visible) return null;
+  if (!visible) return (
+    <span className="sr-only" aria-live="polite">
+      {dismissed ? 'Alert dismissed' : ''}
+    </span>
+  );
 
   const handleDismiss = () => {
     setVisible(false);
+    setDismissed(true);
     onDismiss?.();
   };
 
@@ -63,9 +69,7 @@ export const Alert = ({
       </span>
 
       <div className="alert__body">
-        {title && (
-          <p className="alert__title">{title}</p>
-        )}
+        {title && <p className="alert__title">{title}</p>}
         <div className="alert__message">{children}</div>
       </div>
 

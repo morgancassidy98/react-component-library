@@ -78,13 +78,15 @@ export const CheckboxGroup = ({
     <fieldset
       className={groupClasses}
       aria-describedby={hasError ? errorId : undefined}
-      aria-required={required}
       disabled={disabled}
     >
       <legend className="form__label">
         {legend}
         {required && (
-          <span className="form__required" aria-hidden="true"> *</span>
+          <>
+            <span className="form__required" aria-hidden="true"> *</span>
+            <span className="sr-only"> (required)</span>
+          </>
         )}
       </legend>
 

@@ -48,13 +48,15 @@ export const RadioGroup = ({
     <fieldset
       className={groupClasses}
       aria-describedby={hasError ? errorId : undefined}
-      aria-required={required}
       disabled={disabled}
     >
       <legend className="form__label">
         {legend}
         {required && (
-          <span className="form__required" aria-hidden="true"> *</span>
+          <>
+            <span className="form__required" aria-hidden="true"> *</span>
+            <span className="sr-only"> (required)</span>
+          </>
         )}
       </legend>
 
@@ -68,6 +70,7 @@ export const RadioGroup = ({
             helperText={option.helperText}
             disabled={disabled || option.disabled}
             checked={value === option.value}
+            required={required}
             onChange={() => onChange?.(option.value)}
           />
         ))}

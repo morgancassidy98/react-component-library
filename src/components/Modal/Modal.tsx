@@ -38,29 +38,26 @@ export const Modal = ({
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  // Store the element that triggered the modal
-  // so we can return focus to it on close
+  // Store trigger element
   useEffect(() => {
     if (isOpen) {
       previousFocusRef.current = document.activeElement as HTMLElement;
     }
   }, [isOpen]);
 
-  // Focus the first focusable element when modal opens
+  // Focus first focusable element
   useEffect(() => {
     if (!isOpen) return;
-
     const frame = requestAnimationFrame(() => {
       const focusable = modalRef.current?.querySelectorAll<HTMLElement>(
         FOCUSABLE_SELECTORS
       );
       focusable?.[0]?.focus();
     });
-
     return () => cancelAnimationFrame(frame);
   }, [isOpen]);
 
-  // Restore focus to trigger element when modal closes
+  // Restore focus on close
   useEffect(() => {
     if (!isOpen && previousFocusRef.current) {
       previousFocusRef.current.focus();
@@ -68,19 +65,17 @@ export const Modal = ({
     }
   }, [isOpen]);
 
-  // Close on Escape key
+  // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
-
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Prevent body scroll when open
+  // Prevent body scroll
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -90,27 +85,33 @@ export const Modal = ({
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
-  // Trap focus inside modal
+  // Inert app root when modal is open
+  useEffect(() => {
+    const appRoot = document.getElementById('app-root');
+    if (!appRoot) return;
+    if (isOpen) {
+      appRoot.setAttribute('inert', '');
+    } else {
+      appRoot.removeAttribute('inert');
+    }
+    return () => appRoot.removeAttribute('inert');
+  }, [isOpen]);
+
+  // Focus trap
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key !== 'Tab') return;
-
     const focusable = modalRef.current?.querySelectorAll<HTMLElement>(
       FOCUSABLE_SELECTORS
     );
-
     if (!focusable || focusable.length === 0) return;
-
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
-
     if (e.shiftKey) {
-      // Shift+Tab — if on first element, wrap to last
       if (document.activeElement === first) {
         e.preventDefault();
         last.focus();
       }
     } else {
-      // Tab — if on last element, wrap to first
       if (document.activeElement === last) {
         e.preventDefault();
         first.focus();
@@ -119,9 +120,7 @@ export const Modal = ({
   };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
-    if (closeOnBackdrop && e.target === e.currentTarget) {
-      onClose();
-    }
+    if (closeOnBackdrop && e.target === e.currentTarget) onClose();
   };
 
   if (!isOpen) return null;
@@ -149,7 +148,6 @@ export const Modal = ({
         aria-describedby={bodyId}
         onKeyDown={handleKeyDown}
       >
-        {/* Header */}
         <div className="modal__header">
           <h2 className="modal__title" id={titleId}>
             {title}
@@ -163,12 +161,10 @@ export const Modal = ({
           </button>
         </div>
 
-        {/* Body */}
         <div className="modal__body" id={bodyId}>
           {children}
         </div>
 
-        {/* Footer */}
         {footer && (
           <div className="modal__footer">
             {footer}

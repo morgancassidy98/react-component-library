@@ -87,12 +87,13 @@ const ToastItem = ({
         </button>
       )}
 
-      {toast.duration && (
-        <div
-          className="toast__progress"
-          style={{ animationDuration: `${toast.duration}ms` }}
-        />
-      )}
+     {toast.duration && (
+  <div
+    className="toast__progress"
+    aria-hidden="true"
+    style={{ animationDuration: `${toast.duration}ms` }}
+  />
+)}
     </div>
   );
 };
