@@ -1,0 +1,209 @@
+/* ── Base ── */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Tab List ── */
+.tabs__list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex-shrink: 0;
+}
+
+.tabs__list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line variant */
+.tabs__list--line {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+  gap: 0;
+}
+
+/* Pill variant */
+.tabs__list--pill {
+  background: var(--color-ghost-hover);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  gap: 4px;
+}
+
+/* Bordered variant */
+.tabs__list--bordered {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 4px;
+  gap: 4px;
+}
+
+/* ── Tab Button ── */
+.tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition);
+  position: relative;
+  color: var(--color-on-light);
+  opacity: 0.6;
+}
+
+.tabs__tab:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius);
+  opacity: 1;
+}
+
+/* ── Line Tab ── */
+.tabs__tab--line {
+  padding: 10px 16px 12px;
+  border-radius: 0;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+}
+
+.tabs__tab--line:hover:not(.tabs__tab--disabled) {
+  opacity: 1;
+  color: var(--color-primary);
+  background: var(--color-ghost-hover);
+}
+
+.tabs__tab--line.tabs__tab--active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  opacity: 1;
+}
+
+/* ── Pill Tab ── */
+.tabs__tab--pill {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+}
+
+.tabs__tab--pill:hover:not(.tabs__tab--disabled) {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.tabs__tab--pill.tabs__tab--active {
+  background: #ffffff;
+  color: var(--color-primary);
+  opacity: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Bordered Tab ── */
+.tabs__tab--bordered {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.tabs__tab--bordered:hover:not(.tabs__tab--disabled) {
+  opacity: 1;
+  background: var(--color-primary);
+  color: var(--color-on-dark);
+}
+
+.tabs__tab--bordered.tabs__tab--active {
+  background: var(--color-primary);
+  color: var(--color-on-dark);
+  opacity: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Disabled ── */
+.tabs__tab--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Panel ── */
+.tabs__panel {
+  padding: 20px 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: 1.7;
+  color: var(--color-on-light);
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+/* Prevent tabs from shrinking below readable size */
+.tabs__tab {
+  flex-shrink: 0;
+}
+
+/* Add scroll padding so active tab isn't hidden behind edge */
+.tabs__list {
+  scroll-padding-inline: 16px;
+  padding-inline: 2px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 480px) {
+  .tabs__list {
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+
+  .tabs__list--pill {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .tabs__list--bordered {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .tabs__list--line {
+    gap: 0;
+  }
+
+  .tabs__tab--line,
+  .tabs__tab--pill,
+  .tabs__tab--bordered {
+    font-size: 11px;
+    padding: 8px 10px;
+    flex-shrink: 1;
+  }
+
+  .tabs__tab--line {
+    padding-bottom: 10px;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .tabs__tab--pill,
+  .tabs__tab--bordered {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .tabs__panel {
+    padding: 16px 0;
+    font-size: 13px;
+  }
+}

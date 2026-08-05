@@ -14,3 +14,4 @@ export { ToastContainer } from './components/Toast/Toast';
 export { useToast } from './components/Toast/useToast';
 export { Card } from './components/Card/Card';
 export { Nav } from './components/Nav/Nav';
+export { Tabs } from './components/Tabs/Tabs';
