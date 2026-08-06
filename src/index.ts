@@ -15,3 +15,4 @@ export { useToast } from './components/Toast/useToast';
 export { Card } from './components/Card/Card';
 export { Nav } from './components/Nav/Nav';
 export { Tabs } from './components/Tabs/Tabs';
+export { Accordion } from './components/Accordion/Accordion';

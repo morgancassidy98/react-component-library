@@ -47,6 +47,7 @@ The library was built by [Cassidy Morgan Thorp](https://cassidymorganthorp.com),
 | `Card` | Compound component, 3 variants, clickable |
 | `Nav` | Responsive, hamburger menu, aria-current |
 | `Tabs` | Roving tabindex, 3 variants, keyboard navigation |
+| `Accordion` | Single/multiple mode, animated panels, aria-expanded |
 
 ---
 
@@ -112,6 +113,35 @@ import { Modal } from './components/Modal/Modal';
 >
   This action cannot be undone.
 </Modal>
+```
+
+---
+
+## Accordion
+
+```tsx
+import { Accordion } from './components/Accordion/Accordion';
+
+// Single mode — opening one closes others
+<Accordion defaultOpen="item1" mode="single">
+  <Accordion.Item value="item1">
+    <Accordion.Trigger>What is CMT UI?</Accordion.Trigger>
+    <Accordion.Panel>
+      CMT UI is an accessible React component library...
+    </Accordion.Panel>
+  </Accordion.Item>
+  <Accordion.Item value="item2">
+    <Accordion.Trigger>How do I install it?</Accordion.Trigger>
+    <Accordion.Panel>
+      Clone the repository and run npm install...
+    </Accordion.Panel>
+  </Accordion.Item>
+</Accordion>
+
+// Multiple mode — any number can be open simultaneously
+<Accordion mode="multiple" defaultOpen={['item1', 'item2']}>
+  ...
+</Accordion>
 ```
 
 ---
@@ -187,6 +217,9 @@ Modal implements the full ARIA dialog pattern: `role="dialog"`, `aria-modal="tru
 **Focus Management**
 Modal traps focus within the dialog using a roving focus implementation that handles both Tab and Shift+Tab cycling. When the modal closes, focus is restored to the element that triggered it. Toast auto-focuses the first focusable element when opened.
 
+**Accordion**
+Accordion triggers use `aria-expanded` to communicate open/closed state and `aria-controls` linking to the panel ID. Each panel uses `role="region"` with `aria-labelledby` pointing back to its trigger, so screen readers announce the trigger label when entering the panel. Triggers are wrapped in `<h3>` elements to provide heading semantics — screen reader users can navigate accordion sections by heading. The panel expand/collapse animation uses `grid-template-rows` from `0fr` to `1fr`, which reliably animates from zero height to auto height without requiring a hardcoded `max-height` value.
+
 **Tabs**
 Tabs implements the ARIA authoring practices roving tabindex pattern. Only the active tab is in the document tab order (`tabIndex={0}`); inactive tabs use `tabIndex={-1}`. Arrow keys move between tabs; Tab moves to the panel. Home and End jump to the first and last tab. Each tab is linked to its panel via `aria-controls` and `aria-labelledby`.
 
@@ -207,6 +240,7 @@ SkipNav renders as a native anchor element that is visually hidden until it rece
 | Checkbox / Radio | `Space` to toggle |
 | Modal | `Escape` to close, `Tab` / `Shift+Tab` to cycle focus |
 | Tabs | `Arrow Left` / `Arrow Right` to move, `Home` / `End` to jump, `Tab` to enter panel |
+| Accordion | `Enter` / `Space` to toggle, `Tab` to move between triggers |
 | Nav | `Tab` to navigate, `Enter` to activate |
 | Select | Native browser keyboard support |
 | Toast | `Tab` to focus dismiss button, `Enter` / `Space` to dismiss |
