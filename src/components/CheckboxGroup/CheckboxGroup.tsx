@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import { Checkbox } from '../Checkbox/Checkbox';
-import './CheckboxGroup.css';
+import './CheckBoxGroup.css';
 
 type CheckboxOption = {
   value: string;
